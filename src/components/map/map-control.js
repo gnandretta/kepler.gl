@@ -148,11 +148,15 @@ LayerSelectorPanel.displayName = 'LayerSelectorPanel';
 
 const MapControlPanel = React.memo(({children, header, onClick, scale = 1, isExport}) => (
   <StyledMapControlPanel
-    style={{
-      transform: `scale(${scale}) translate(calc(-${25 * (scale - 1)}% - ${10 *
-        scale}px), calc(${25 * (scale - 1)}% + ${10 * scale}px))`,
-      marginBottom: '8px'
-    }}
+    style={
+      scale === 1
+        ? {}
+        : {
+            transform: `scale(${scale}) translate(calc(-${25 * (scale - 1)}% - ${10 *
+              scale}px), calc(${25 * (scale - 1)}% + ${10 * scale}px))`,
+            marginBottom: '8px'
+          }
+    }
   >
     <StyledMapControlPanelHeader>
       {isExport ? (
